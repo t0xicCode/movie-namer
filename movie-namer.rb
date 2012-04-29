@@ -74,15 +74,16 @@ a.each {|x|
     end
     
     puts "Renaming video file"
-    puts "    %s --> %s [%d]%s" % [file, name, year, File.extname(file)]
+    puts "    %s --> %s [%d]%s" % [File.basename(file) + File.extname(file), name, year, File.extname(file)]
     File.rename(file, "%s/%s [%d]%s" % [x, name, year, File.extname(file)])
     if subs.count > 0 then
     puts "Renaming subtitle files"
         subs.each {|s|
-            puts "    %s" % s
+        puts "    %s --> %s [%d]%s" % [File.basename(s) + File.extname(s), name, year, File.extname(s)]
             File.rename(s, "%s/%s [%d]%s" % [x, name, year, File.extname(s)])
         }
     end
     puts "Renaming directory"
+    puts "    %s --> %s [%d]" % [File.basename(x), name, year]
     FileUtils.mv( x, "%s/%s [%d]" % [File.expand_path('..', x), name, year])
 }

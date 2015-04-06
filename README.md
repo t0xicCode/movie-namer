@@ -1,7 +1,7 @@
 movie-namer
 ===========
 
-Instalation
+Installation
 -----------
 Coming up
 
